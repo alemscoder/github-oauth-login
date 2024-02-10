@@ -1,0 +1,19 @@
+{
+  "name": "github-oauth-login-backend",
+  "author": "Alejandro Martinez Sanchez",
+  "description": "Sets up an Express server with routes to fetch an OAuth access token and user data from GitHub",
+  "license": "MIT",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.1.3"
+  }
+}
