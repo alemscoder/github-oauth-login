@@ -3,8 +3,8 @@
 This project is a web application that use the GitHub API to perform various actions such as user authentication, displaying user information, repository creation, and uploading files to existing repositories.
 
 <div align="center">
-   <img src="https://i.ibb.co/J72V7M0/login-screen.jpg" alt="Login screen">
-   <img src="https://i.ibb.co/Y2Y0cjq/user-data-screen.jpg" alt="User data screen">
+   <img src="https://i.ibb.co/J72V7M0/login-screen.jpg" alt="Login screen" width=374 height=590>
+   <img src="https://i.ibb.co/Y2Y0cjq/user-data-screen.jpg" alt="User data screen" width=374 height=590>
 </div>
 
 ## Install
