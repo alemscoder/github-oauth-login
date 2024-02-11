@@ -92,7 +92,7 @@ Contributions are welcome. If you would like to contribute to this project, plea
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE.md).
 
 ## Disclaimer
 The trademarks, logos, and any other third-party materials used in this project belong to their respective owners. This project is not endorsed by or affiliated with GitHub or any other third-party service providers mentioned herein.
