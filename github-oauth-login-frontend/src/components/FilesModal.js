@@ -4,7 +4,7 @@ import "@shoelace-style/shoelace/dist/components/dialog/dialog.js"
 import "@shoelace-style/shoelace/dist/components/input/input.js"
 import "@shoelace-style/shoelace/dist/components/checkbox/checkbox.js"
 /* Components imports */
-import { ToastNotification } from "./ToastNotification.js"
+import { toastNotification } from "./toastNotification.js"
 
 class FilesModal {
 
@@ -214,18 +214,18 @@ class FilesModal {
         if (fileCreateCount > 0) {
           notificationMessage += `${fileCreateCount} file(s) created.`
         }      
-        ToastNotification(notificationMessage.trim())
+        toastNotification(notificationMessage.trim())
       }
       /* Build and show invalid message toast if 
       putResponse.ok = false and http code match */
       if (invalidDirName > 0) {
-        ToastNotification("Invalid directory name.")
+        toastNotification("Invalid directory name.")
       }    
       if (errorCount > 0) {
-        ToastNotification("Repository name not found.")
+        toastNotification("Repository name not found.")
       }
       if (badCredentials > 0) {
-        ToastNotification("Session token has expired or is invalid, please log in again.")
+        toastNotification("Session token has expired or is invalid, please log in again.")
       }
       /* Restore the initial state of the action button,
       hide the modal and remove the event listeners */
@@ -235,10 +235,10 @@ class FilesModal {
       this.removeEventListeners()
     } catch (error) {
       if (error.message === "Failed to fetch") {
-        ToastNotification("Connection error, could not access the server.")
+        toastNotification("Connection error, could not access the server.")
         console.error("Connection error, could not access the server.", error)
       } else {
-        ToastNotification("Error making request to server.")
+        toastNotification("Error making request to server.")
         console.error("Error making request to server.", error)
       }
       throw error

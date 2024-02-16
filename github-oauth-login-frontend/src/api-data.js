@@ -1,5 +1,5 @@
 /* Components imports */
-import { ToastNotification } from "./components/ToastNotification.js"
+import { toastNotification } from "./components/toastNotification.js"
 /* Global variables */
 const BACKEND_URL = process.env.BACKEND_URL
 
@@ -20,33 +20,33 @@ export async function getAccessToken(code, githubLoginInstance) {
         accessToken = data.access_token
         localStorage.setItem("accessToken", accessToken)
         githubLoginInstance.btnSection = false
-        ToastNotification("Login successful!")
+        toastNotification("Login successful!")
         return data
       }
       switch(data.error) {
         case "incorrect_client_credentials":
-        ToastNotification("Login fail." + " " + data.error_description)
+        toastNotification("Login fail." + " " + data.error_description)
         break
         case "redirect_uri_mismatch":
-        ToastNotification("Login fail." + " " + data.error_description)
+        toastNotification("Login fail." + " " + data.error_description)
         break
         case "bad_verification_code":
-        ToastNotification("Login fail." + " " + data.error_description)
+        toastNotification("Login fail." + " " + data.error_description)
         break
         case "unverified_user_email":
-        ToastNotification("Login fail." + " " + data.error_description)
+        toastNotification("Login fail." + " " + data.error_description)
         break
       }
     } else {
-      ToastNotification("Login fail, error trying to get access token.")
+      toastNotification("Login fail, error trying to get access token.")
       throw new Error("Login fail, error trying to get access token.")
     }
   } catch (error) {
     if (error.message === "Failed to fetch") {
-      ToastNotification("Connection error, could not access the server.")
+      toastNotification("Connection error, could not access the server.")
       console.error("Connection error, could not access the server.", error)
     } else {
-      ToastNotification("Error making request to server.")
+      toastNotification("Error making request to server.")
       console.error("Error making request to server.", error)
     }
     throw error
@@ -77,7 +77,7 @@ export async function getUserData(githubLoginInstance) {
     } 
   } catch (error) {
     githubLoginInstance.loading = false
-    ToastNotification("Connection error, fail to get the user data from the server.")
+    toastNotification("Connection error, fail to get the user data from the server.")
     console.error("Connection error, fail to get the user data from the server.", error)
     throw error
   }

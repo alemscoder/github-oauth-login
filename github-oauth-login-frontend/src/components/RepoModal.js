@@ -5,7 +5,7 @@ import "@shoelace-style/shoelace/dist/components/input/input.js"
 import "@shoelace-style/shoelace/dist/components/radio/radio.js"
 import "@shoelace-style/shoelace/dist/components/radio-group/radio-group.js"
 /* Components imports */
-import { ToastNotification } from "./ToastNotification.js"
+import { toastNotification } from "./toastNotification.js"
 
 class RepoModal {
 
@@ -90,22 +90,22 @@ class RepoModal {
       .then((data) => {
         /* Show the message of the error */
         if (data.errors.message) {
-          ToastNotification(data.errors.message)
+          toastNotification(data.errors.message)
           /* If response have a list of errors then find a error that
           contain a message for show that message */
         } else if (data.errors && data.errors.length > 0) {
           const error = data.errors.find((error) => error.message)
           if (error) {
-            ToastNotification(error.message)
+            toastNotification(error.message)
           } else {
-            ToastNotification("Unknown error.")
+            toastNotification("Unknown error.")
           }
         } else {
-          ToastNotification("Unknown error.")
+          toastNotification("Unknown error.")
         }
       })
       .catch((error) => {
-        ToastNotification("Error parsing response:", error)
+        toastNotification("Error parsing response:", error)
       })
     }
   }
@@ -141,7 +141,7 @@ class RepoModal {
       /* Case of http response status codes */
       switch (response.status) {
         case 201:
-          ToastNotification("Repository created successfully.")
+          toastNotification("Repository created successfully.")
           break
         case 304:
           await this.handleErrorMessage(response)
@@ -150,7 +150,7 @@ class RepoModal {
           await this.handleErrorMessage(response)
           break
         case 401:
-          ToastNotification("Session token has expired or is invalid, please log in again.")
+          toastNotification("Session token has expired or is invalid, please log in again.")
           break
         case 403:
           await this.handleErrorMessage(response)
@@ -162,7 +162,7 @@ class RepoModal {
           await this.handleErrorMessage(response)
           break
         default:
-          ToastNotification("Unexpected status code.")
+          toastNotification("Unexpected status code.")
           break
       }
       /* Restore the initial state of the action button,
@@ -173,10 +173,10 @@ class RepoModal {
 			this.removeEventListeners()
     } catch (error) {
       if (error.message === "Failed to fetch") {
-        ToastNotification("Connection error, could not access the server.")
+        toastNotification("Connection error, could not access the server.")
         console.error("Connection error, could not access the server.", error)
       } else {
-        ToastNotification("Error making request to server.")
+        toastNotification("Error making request to server.")
         console.error("Error making request to server.", error)
       }
       throw error

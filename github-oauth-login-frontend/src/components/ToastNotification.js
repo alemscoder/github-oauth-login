@@ -2,7 +2,7 @@
 import {html, render} from "lit-html"
 import "@shoelace-style/shoelace/dist/components/alert/alert.js"
 
-export function ToastNotification(message) {
+export function toastNotification(message) {
 
   /* Container for storing a reference of the 
   alert and reusing the toast() method */

@@ -6,7 +6,7 @@ import "@shoelace-style/shoelace/dist/themes/light.css"
 /* Components & Assets imports */
 import "./style.css"
 import { getAccessToken, getUserData } from "./api-data.js"
-import { ToastNotification } from "./components/ToastNotification.js"
+import { toastNotification } from "./components/toastNotification.js"
 import githubMark from "./assets/github-mark.svg"
 import githubLogo from "./assets/GitHub_Logo.webp"
 import authentication from "./assets/authentication.svg"
@@ -76,7 +76,7 @@ class GithubLogin extends LitElement {
     if (btnGetUserData) {
       btnGetUserData.style.display = "none"
     }
-    ToastNotification("Session token has expired or is invalid, please log in again.")
+    toastNotification("Session token has expired or is invalid, please log in again.")
   }
 
   /* Class method: manageUserData */
@@ -100,12 +100,12 @@ class GithubLogin extends LitElement {
           be updated in the local storage and in the page */
           localStorage.setItem("userData", JSON.stringify(serverData))
           this.userData = serverData
-          ToastNotification("User data updated!")
+          toastNotification("User data updated!")
         } else {
           /* User data in local storage is up to date 
           and can be displayed in the page */
           this.userData = storedUserData
-          ToastNotification("The user data is up to date.")
+          toastNotification("The user data is up to date.")
         }
       } 
     } else {
@@ -157,7 +157,7 @@ class GithubLogin extends LitElement {
         this.btnSection = true
       }, 2000)
     } else {
-      ToastNotification("Logout fail :(")
+      toastNotification("Logout fail :(")
     }
   }
 
